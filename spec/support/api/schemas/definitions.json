@@ -1,0 +1,49 @@
+{
+  "definitions": {
+    "author" : {
+      "type" : "object",
+      "required" : [
+        "id",
+        "name",
+        "active"
+      ],
+      "properties" : {
+        "id" : { "type" : "integer" },
+        "name" : { "type" : "string" },
+        "active" : { "type" : "boolean" }
+      }
+    },
+    "comment" : {
+      "type" : "object",
+      "required" : [
+        "id",
+        "content",
+        "author"
+      ],
+      "properties" : {
+        "id" : { "type" : "integer" },
+        "content" : { "type" : "string" },
+        "author" : { "$ref" : "#/definitions/author" }
+      }
+    },
+    "post" : {
+      "type" : "object",
+      "required" : [
+        "id",
+        "title",
+        "content",
+        "author"
+      ],
+      "properties" : {
+        "id" : { "type" : "integer" },
+        "title" : { "type" : "string" },
+        "content" : { "type" : "string" },
+        "author" : { "$ref" : "#/definitions/author" },
+        "comments": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/comment" }
+        }
+      }
+    }
+  }
+}
